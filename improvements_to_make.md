@@ -10,3 +10,13 @@ This file is a living document where you can dump your thoughts, client requests
 - [ ] Add an "About the Baker" section with a picture.
 - [ ] Implement a Dark Mode toggle.
 - [ ] Add animations when scrolling down the page.
+
+modify the AI gen pic for tres, Cake, Tiramisu to PS real pictures 
+Change Mango tres plate to box(same as others)
+
+
+
+Check if it is capable 
+Make interactive websites()
+Add whatsapp and Instagram link to order 
+Add payment gateway 
