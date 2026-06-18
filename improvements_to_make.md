@@ -14,6 +14,8 @@ This file is a living document where you can dump your thoughts, client requests
 
 - [ ]modify the AI gen pic for tres, Cake, Tiramisu to PS real pictures 
 - [ ]Change Mango tres plate to box(same as others)
+- [ ] Add catering orders
+- [ ] Add restaurant supply with pictures 
 
 
 
