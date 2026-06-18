@@ -16,8 +16,9 @@ This file is a living document where you can dump your thoughts, client requests
 - [ ] Change Mango tres plate to box(same as others)
 - [ ] Add catering orders
 - [ ] Add restaurant supply with pictures
-- [ ] reomve coconut shave from Dubai kataifi chocolate picture
-- [ ] Change the sign board behind the dubai chocolate brownie from matcha 
+- [ ] remove coconut shave from Dubai kataifi chocolate picture
+- [ ] Change the sign board behind the dubai chocolate brownie and remove matcha word
+- [ ] Align the Ready to Order tab properly(Heavenly treats by angel is not aligned properly)
 
 
 
