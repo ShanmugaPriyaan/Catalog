@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heavenly Treats by Angel — Catalog</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c97b8a;
+    --rose-deep: #a85a6b;
+    --cream: #fdf6f0;
+    --cream-deep: #f7e8dc;
+    --gold: #c9a96e;
+    --ink: #3d2a2a;
+    --muted: #7a5e5e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 50px;
+    background: var(--cream);
+  }
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: var(--rose-deep);
+  }
+
+  /* COVER */
+  .cover {
+    text-align: center;
+    padding: 80px 20px 60px;
+    border-bottom: 2px solid var(--cream-deep);
+    margin-bottom: 50px;
+  }
+  .cover .ornament { color: var(--gold); font-size: 28px; letter-spacing: 12px; margin-bottom: 20px; }
+  .cover h1 {
+    font-size: 56px;
+    line-height: 1.1;
+    color: var(--rose-deep);
+    margin-bottom: 18px;
+    font-style: italic;
+  }
+  .cover .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 35px;
+  }
+  .cover .intro {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .cover .intro p + p { margin-top: 14px; }
+
+  /* SECTIONS */
+  section {
+    margin-bottom: 60px;
+    page-break-inside: avoid;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .section-header .eyebrow {
+    display: inline-block;
+    color: var(--gold);
+    letter-spacing: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section-header h2 {
+    font-size: 36px;
+    font-style: italic;
+  }
+  .section-header .sub {
+    color: var(--muted);
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--cream-deep);
+    border-radius: 14px;
+    padding: 30px 35px;
+    box-shadow: 0 4px 18px rgba(169, 90, 107, 0.06);
+  }
+
+  .flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 30px;
+    margin: 18px 0;
+  }
+  .flavor-grid li {
+    list-style: none;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--cream-deep);
+    font-size: 15px;
+  }
+  .flavor-grid li::before {
+    content: "✿ ";
+    color: var(--rose);
+    margin-right: 6px;
+  }
+
+  .flavor-group-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--rose-deep);
+    font-weight: 600;
+    margin-top: 24px;
+    margin-bottom: 4px;
+  }
+  .flavor-group-note {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .pricing {
+    display: flex;
+    gap: 20px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .price-card {
+    flex: 1;
+    min-width: 200px;
+    background: var(--cream);
+    border: 1px solid var(--cream-deep);
+    border-radius: 10px;
+    padding: 18px 22px;
+    text-align: center;
+  }
+  .price-card .size {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--rose-deep);
+    font-weight: 600;
+  }
+  .price-card .amt {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+  .price-card .starting {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .note {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .custom-list {
+    list-style: none;
+    margin: 14px 0;
+  }
+  .custom-list li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 15px;
+  }
+  .custom-list li::before {
+    content: "•";
+    color: var(--rose);
+    position: absolute;
+    left: 8px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .promise-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .promise-list li {
+    background: var(--cream);
+    padding: 16px 20px;
+    border-radius: 10px;
+    border-left: 4px solid var(--gold);
+    font-size: 15px;
+  }
+  .promise-list li::before {
+    content: "✓ ";
+    color: var(--rose-deep);
+    font-weight: bold;
+    margin-right: 6px;
+  }
+
+  .why-baker, .custom-welcome {
+    background: linear-gradient(135deg, var(--cream-deep), var(--cream));
+    border-radius: 14px;
+    padding: 35px 40px;
+    font-size: 15px;
+  }
+  .why-baker p + p, .custom-welcome p + p { margin-top: 12px; }
+
+  /* CONTACT / CLOSING */
+  .closing {
+    text-align: center;
+    padding: 60px 30px;
+    background: var(--rose-deep);
+    color: var(--cream);
+    border-radius: 16px;
+    margin-top: 50px;
+  }
+  .closing h2 {
+    color: var(--cream);
+    font-size: 40px;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .closing p { color: var(--cream); opacity: 0.92; }
+  .closing .insta {
+    margin-top: 26px;
+    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+  .closing .insta strong {
+    display: block;
+    font-size: 26px;
+    font-style: normal;
+    margin-top: 6px;
+    letter-spacing: 1px;
+  }
+  .closing .thanks {
+    margin-top: 30px;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    opacity: 0.9;
+  }
+  .closing .sign {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+  }
+
+  .viral-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 18px;
+  }
+  .viral-card {
+    background: var(--cream);
+    padding: 22px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid var(--cream-deep);
+  }
+  .viral-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--rose-deep);
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .viral-card p { font-size: 14px; color: var(--muted); }
+
+  .toppings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+  }
+  .topping-chip {
+    background: var(--cream);
+    border: 1px solid var(--cream-deep);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    margin: 50px 0 40px;
+    letter-spacing: 10px;
+  }
+
+  /* PRINT */
+  @media print {
+    body, .page { background: white; padding: 20px; max-width: 100%; }
+    section { page-break-inside: avoid; }
+    .closing { background: var(--rose-deep) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .card, .price-card, .promise-list li, .why-baker, .custom-welcome, .viral-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <header class="cover">
+    <div class="ornament">✦ ✿ ✦</div>
+    <h1>Heavenly Treats<br><span style="font-size:32px; color:var(--gold);">by Angel</span></h1>
+    <div class="tagline">Freshly Baked just for you · Customized with Love</div>
+    <div class="intro">
+      <p>Welcome to <strong>Heavenly Treats by Angel</strong>, where every dessert is handcrafted fresh to order with quality ingredients, attention to detail, and plenty of love.</p>
+      <p>From celebration cakes and fusion desserts to healthy treats and customized creations, we are here to bring your sweetest cravings to life.</p>
+    </div>
+  </header>
+
+  <!-- TRES LECHES -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Signature</div>
+      <h2>Tres Leches Collection</h2>
+      <div class="sub">Soft, creamy, and packed with flavor</div>
+    </div>
+    <div class="card">
+      <h3 class="flavor-group-title">Available Flavours</h3>
+      <ul class="flavor-grid">
+        <li>Classic Tres Leches</li>
+        <li>Rasmalai Tres Leches</li>
+        <li>Mango Tres Leches</li>
+        <li>Pistachio Tres Leches</li>
+        <li>Rose Pistachio Tres Leches</li>
+        <li>Lotus Biscoff Tres Leches</li>
+        <li>Cookies &amp; Cream Tres Leches</li>
+        <li>Mixed Berry Tres Leches</li>
+      </ul>
+      <p class="note">Have a flavor in mind that's not listed? Let us know — we love creating custom flavors!</p>
+      <div class="pricing">
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">22 oz</div>
+          <div class="amt">$35</div>
+        </div>
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">52 oz</div>
+          <div class="amt">$65</div>
+        </div>
+      </div>
+      <p class="note">Final pricing may vary depending on flavor selection.</p>
+    </div>
+  </section>
+
+  <!-- TIRAMISU -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Italian Classic</div>
+      <h2>Tiramisu Collection</h2>
+      <div class="sub">Rich mascarpone layers, premium ingredients</div>
+    </div>
+    <div class="card">
+      <h3 class="flavor-group-title">Available Flavours</h3>
+      <ul class="flavor-grid">
+        <li>Classic Tiramisu</li>
+        <li>Vietnamese Tiramisu</li>
+        <li>Pistachio Tiramisu</li>
+        <li>Mango Tiramisu</li>
+      </ul>
+      <div class="pricing">
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">22 oz</div>
+          <div class="amt">$40</div>
+        </div>
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">52 oz</div>
+          <div class="amt">$55</div>
+        </div>
+      </div>
+      <p class="note">Final pricing may vary depending on flavor selection.</p>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- CUSTOM CAKES -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Made for Celebrations</div>
+      <h2>Custom Cakes</h2>
+      <div class="sub">Birthdays · Anniversaries · Showers · Weddings</div>
+    </div>
+    <div class="card">
+      <div class="pricing">
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">4" Bento Cake</div>
+          <div class="amt">$30</div>
+        </div>
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">6" Cake</div>
+          <div class="amt">$65</div>
+        </div>
+      </div>
+
+      <h3 class="flavor-group-title">Final Pricing Depends On</h3>
+      <ul class="custom-list">
+        <li>Size</li>
+        <li>Flavor</li>
+        <li>Design &amp; Decorations</li>
+        <li>Customization Requirements</li>
+      </ul>
+
+      <h3 class="flavor-group-title">Available Sizes</h3>
+      <ul class="flavor-grid">
+        <li>4" Bento Cake</li>
+        <li>5" Cake</li>
+        <li>6" Cake</li>
+        <li>8" Cake</li>
+        <li>9" Cake</li>
+      </ul>
+      <p class="note">More sizes coming soon!</p>
+    </div>
+  </section>
+
+  <!-- FLAVOURS -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Build Your Cake</div>
+      <h2>Cake Flavours &amp; Fillings</h2>
+    </div>
+    <div class="card">
+      <h3 class="flavor-group-title">Classic Flavours</h3>
+      <div class="flavor-group-note">Available with Vanilla or Chocolate Sponge</div>
+      <ul class="flavor-grid">
+        <li>Vanilla</li>
+        <li>Chocolate</li>
+        <li>Butterscotch</li>
+        <li>Pineapple</li>
+        <li>Black Forest</li>
+        <li>Marble (Vanilla &amp; Chocolate)</li>
+      </ul>
+
+      <h3 class="flavor-group-title">Premium Flavours</h3>
+      <div class="flavor-group-note">Available with Vanilla or Chocolate Sponge</div>
+      <ul class="flavor-grid">
+        <li>Rasmalai</li>
+        <li>Pretty Pistachio</li>
+        <li>Mango Dream Cream</li>
+        <li>Rose Pistachio</li>
+        <li>Saffron &amp; Cardamom</li>
+        <li>Vietnamese Tiramisu Cake</li>
+        <li>Classic Tiramisu Cake</li>
+        <li>Mango Butterscotch</li>
+        <li>Nutella Hazelnut</li>
+        <li>Nutella Ferrero Rocher</li>
+        <li>Lotus Biscoff</li>
+        <li>Fresh Mixed Berry</li>
+        <li>Milk Chocolate Truffle</li>
+        <li>Dark Chocolate Truffle</li>
+        <li>Oreo Cookies &amp; Cream</li>
+        <li>Caramel &amp; Pecan</li>
+        <li>Hazelnut Praline</li>
+        <li>White Forest</li>
+        <li>Chocolate Mousse</li>
+        <li>Mocha Mousse</li>
+        <li>Dark Chocolate Raspberry</li>
+        <li>Strawberry Shortcake</li>
+      </ul>
+      <p class="note">Don't see your favorite flavor? Reach out — we love bringing custom dessert ideas to life.</p>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- VIRAL -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Trending Now</div>
+      <h2>Viral Favorites</h2>
+      <div class="sub">The internet's favorite desserts, handcrafted fresh</div>
+    </div>
+    <div class="viral-grid">
+      <div class="viral-card">
+        <h4>Dubai Kataifi Chocolate</h4>
+        <p>Available in Milk Chocolate &amp; Dark Chocolate</p>
+      </div>
+      <div class="viral-card">
+        <h4>Dubai Chocolate Brownie</h4>
+        <p>A rich, fudgy take on the viral favorite</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BROWNIES -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Fresh from the Oven</div>
+      <h2>Brownie Collection</h2>
+    </div>
+    <div class="card">
+      <h3 class="flavor-group-title">Flavours</h3>
+      <ul class="flavor-grid">
+        <li>Walnut Brownie</li>
+        <li>Double Chocolate Brownie</li>
+        <li>Triple Chocolate Brownie</li>
+        <li>Custom Brownies with Toppings</li>
+      </ul>
+
+      <h3 class="flavor-group-title">Available Toppings</h3>
+      <div class="toppings">
+        <span class="topping-chip">Pistachio Cream</span>
+        <span class="topping-chip">Milk Chocolate</span>
+        <span class="topping-chip">Dark Chocolate</span>
+        <span class="topping-chip">Butterscotch</span>
+        <span class="topping-chip">Caramel</span>
+        <span class="topping-chip">Peanut Butter</span>
+      </div>
+      <p class="note">Add walnuts or your favorite topping to any brownie.</p>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="starting">Starting at</div>
+          <div class="size">Set of 9 pieces</div>
+          <div class="amt">$18</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTHY -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Guilt-Free</div>
+      <h2>Healthy Treats</h2>
+      <div class="sub">Who said healthy can't be delicious?</div>
+    </div>
+    <div class="card">
+      <p style="text-align:center; color:var(--muted); font-style:italic; margin-bottom:18px;">
+        Designed to satisfy your sweet tooth without compromising on taste.
+      </p>
+      <h3 class="flavor-group-title">Available Options</h3>
+      <ul class="custom-list">
+        <li><strong>Healthy Brownie Bites</strong> (No-Bake)</li>
+        <li><strong>NOIRGRAIN Chocolate Chip Cookies</strong> — suitable for all ages, made with wholesome ingredients</li>
+        <li><strong>No-Guilt Peanut Butter &amp; Date Bark</strong></li>
+      </ul>
+      <p class="note">Looking for a healthier version of your favorite dessert? We'd be happy to create it for you.</p>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- CUSTOM ORDERS -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Just Ask</div>
+      <h2>Custom Orders Welcome</h2>
+    </div>
+    <div class="custom-welcome">
+      <p>At <strong>Heavenly Treats by Angel</strong>, we are not limited to our menu.</p>
+      <p>If you're craving something special or have a dessert idea in mind, simply share it with us. We love creating unique, personalized treats tailored to your taste and preferences.</p>
+    </div>
+  </section>
+
+  <!-- PROMISE -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Our Standard</div>
+      <h2>Our Promise</h2>
+    </div>
+    <div class="card">
+      <p style="text-align:center; color:var(--muted); font-style:italic; margin-bottom:10px;">Every order is:</p>
+      <ul class="promise-list">
+        <li>Freshly made to order</li>
+        <li>Prepared with premium ingredients</li>
+        <li>Crafted with care and attention to detail</li>
+        <li>Made without compromising quality or cleanliness</li>
+      </ul>
+      <p class="note">To ensure the best experience, please place your order at least <strong>24–48 hours in advance</strong>.</p>
+    </div>
+  </section>
+
+  <!-- WHY HOME BAKER -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">A Note From Us</div>
+      <h2>Why Choose a Home Baker?</h2>
+    </div>
+    <div class="why-baker">
+      <p>Every dessert you order from a home baker is created specifically for you — not mass-produced in bulk.</p>
+      <p>Your preferences, flavor choices, sweetness level, and design requests are thoughtfully considered throughout the process.</p>
+      <p>When you support a small business, you're supporting a dream, a passion, and countless hours of dedication behind every creation.</p>
+      <p>Every order, review, recommendation, and kind message means more than you know — and for that, we are truly grateful.</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <h2>Ready to Order?</h2>
+    <p>We would love to create something special for your next celebration.</p>
+    <p style="margin-top:10px;">For orders, inquiries, custom requests, or feedback — feel free to reach out anytime.</p>
+    <div class="insta">
+      Follow &amp; Order on Instagram
+      <strong>@heavenlytreatsby_angel</strong>
+    </div>
+    <p class="thanks">Thank you for supporting small businesses and allowing us to be part of your sweetest moments.</p>
+    <div class="sign">— Heavenly Treats by Angel</div>
+  </div>
+
+</div>
+</body>
+</html>

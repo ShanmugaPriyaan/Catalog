@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Heavenly Treats by Angel — Catalog (with Photos)</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c97b8a;
+    --rose-deep: #a85a6b;
+    --cream: #fdf6f0;
+    --cream-deep: #f7e8dc;
+    --gold: #c9a96e;
+    --ink: #3d2a2a;
+    --muted: #7a5e5e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .page { max-width: 980px; margin: 0 auto; padding: 50px 40px; }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--rose-deep); }
+
+  /* ===== IMAGE / PLACEHOLDER SYSTEM ===== */
+  .photo {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(135deg, #f5d6c4, #e8b5b5, #c97b8a);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .photo::before {
+    content: attr(data-label);
+    color: rgba(255,255,255,0.85);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    text-align: center;
+    padding: 12px 18px;
+    z-index: 1;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+  }
+  .photo img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+  .photo img:not([src]), .photo img[src=""] { display: none; }
+  /* Make the placeholder vary per card so it looks less repetitive */
+  .photo.v2 { background: linear-gradient(135deg, #f7e8dc, #e8b5b5, #a85a6b); }
+  .photo.v3 { background: linear-gradient(135deg, #fbe4cf, #c9a96e, #a85a6b); }
+  .photo.v4 { background: linear-gradient(135deg, #f5d6c4, #c97b8a, #7a5e5e); }
+  .photo.v5 { background: linear-gradient(135deg, #fdf6f0, #c9a96e, #c97b8a); }
+
+  /* ===== COVER ===== */
+  .cover {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 60px;
+    box-shadow: 0 18px 50px rgba(168,90,107,0.18);
+  }
+  .cover .hero {
+    height: 460px;
+    position: relative;
+  }
+  .cover .hero .photo { height: 100%; }
+  .cover .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(61,42,42,0.15) 0%, rgba(168,90,107,0.7) 100%);
+    z-index: 3;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    color: var(--cream);
+    padding: 30px;
+  }
+  .cover .ornament { color: var(--cream); letter-spacing: 14px; font-size: 24px; margin-bottom: 16px; opacity: 0.85; }
+  .cover h1 {
+    font-size: 64px; line-height: 1.05; color: var(--cream);
+    font-style: italic; margin-bottom: 10px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .cover h1 .by { display: block; font-size: 34px; color: #f7e8dc; margin-top: 4px; font-style: italic; }
+  .cover .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-style: italic; color: var(--cream);
+    border-top: 1px solid rgba(253,246,240,0.5);
+    border-bottom: 1px solid rgba(253,246,240,0.5);
+    padding: 10px 22px; margin-top: 18px;
+  }
+  .intro-block {
+    background: white; padding: 32px 40px; text-align: center;
+    border-top: 4px solid var(--gold);
+  }
+  .intro-block p + p { margin-top: 12px; }
+
+  /* ===== SECTIONS ===== */
+  section { margin-bottom: 70px; page-break-inside: avoid; }
+  .section-header { text-align: center; margin-bottom: 35px; }
+  .section-header .eyebrow {
+    display: inline-block; color: var(--gold);
+    letter-spacing: 6px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .section-header h2 { font-size: 40px; font-style: italic; }
+  .section-header .sub {
+    color: var(--muted); font-style: italic;
+    font-family: 'Cormorant Garamond', serif; font-size: 19px; margin-top: 8px;
+  }
+
+  /* ===== FEATURE BANNER (one big image + side text) ===== */
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 8px 30px rgba(168,90,107,0.10);
+    background: white;
+    margin-bottom: 30px;
+  }
+  .feature .photo { min-height: 360px; }
+  .feature .content { padding: 36px 38px; display: flex; flex-direction: column; justify-content: center; }
+  .feature.reverse { grid-template-columns: 1fr 1fr; }
+  .feature.reverse .content { order: 1; }
+  .feature.reverse .photo { order: 2; }
+  .feature h3 {
+    font-size: 28px; font-style: italic; color: var(--rose-deep); margin-bottom: 6px;
+  }
+  .feature .lead { color: var(--muted); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; margin-bottom: 14px; }
+
+  /* ===== FLAVOR GALLERY (image grid of flavors) ===== */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .gallery .item { text-align: center; }
+  .gallery .item .photo {
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(168,90,107,0.10);
+  }
+  .gallery .item .label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: var(--ink);
+    margin-top: 10px; font-weight: 500;
+  }
+
+  /* ===== PRICING ===== */
+  .pricing { display: flex; gap: 16px; margin-top: 22px; flex-wrap: wrap; }
+  .price-card {
+    flex: 1; min-width: 180px;
+    background: var(--cream); border: 1px solid var(--cream-deep);
+    border-radius: 10px; padding: 18px 22px; text-align: center;
+  }
+  .price-card .starting { font-size: 11px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
+  .price-card .size { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--rose-deep); font-weight: 600; margin-top: 4px;}
+  .price-card .amt { font-size: 24px; font-weight: 600; color: var(--ink); margin-top: 4px; }
+  .note { font-style: italic; color: var(--muted); font-size: 14px; text-align: center; margin-top: 14px; }
+
+  /* ===== LISTS ===== */
+  .custom-list { list-style: none; margin: 14px 0; }
+  .custom-list li {
+    padding: 6px 0 6px 24px; position: relative; font-size: 15px;
+  }
+  .custom-list li::before {
+    content: "•"; color: var(--rose);
+    position: absolute; left: 8px; font-size: 22px; line-height: 1;
+  }
+
+  /* ===== VIRAL / HEALTHY CARDS ===== */
+  .duo-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 18px;
+  }
+  .duo-card {
+    background: white; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 6px 22px rgba(168,90,107,0.10);
+  }
+  .duo-card .photo { aspect-ratio: 4 / 3; }
+  .duo-card .body { padding: 22px 26px; }
+  .duo-card h4 { font-size: 24px; font-style: italic; color: var(--rose-deep); }
+  .duo-card p { color: var(--muted); font-size: 14px; margin-top: 6px; }
+
+  /* ===== TOPPINGS ===== */
+  .toppings { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
+  .topping-chip {
+    background: var(--cream); border: 1px solid var(--cream-deep);
+    border-radius: 999px; padding: 6px 16px; font-size: 13px; color: var(--ink);
+  }
+
+  /* ===== PROMISE ===== */
+  .promise-list {
+    list-style: none; display: grid;
+    grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0;
+  }
+  .promise-list li {
+    background: var(--cream); padding: 16px 20px;
+    border-radius: 10px; border-left: 4px solid var(--gold); font-size: 15px;
+  }
+  .promise-list li::before {
+    content: "✓ "; color: var(--rose-deep); font-weight: bold; margin-right: 6px;
+  }
+
+  /* ===== WHY HOME BAKER ===== */
+  .why-baker {
+    background: linear-gradient(135deg, var(--cream-deep), var(--cream));
+    border-radius: 14px; padding: 35px 40px; font-size: 15px;
+  }
+  .why-baker p + p { margin-top: 12px; }
+
+  /* ===== CLOSING ===== */
+  .closing {
+    position: relative;
+    border-radius: 20px; overflow: hidden;
+    margin-top: 60px; box-shadow: 0 14px 40px rgba(168,90,107,0.18);
+  }
+  .closing .photo { height: 380px; }
+  .closing .overlay {
+    position: absolute; inset: 0; z-index: 3;
+    background: linear-gradient(180deg, rgba(168,90,107,0.55), rgba(61,42,42,0.85));
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 50px 30px; color: var(--cream);
+  }
+  .closing h2 { color: var(--cream); font-size: 42px; font-style: italic; margin-bottom: 12px; }
+  .closing p { color: var(--cream); opacity: 0.95; max-width: 560px; }
+  .closing .insta {
+    margin-top: 26px; font-size: 18px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+  }
+  .closing .insta strong {
+    display: block; font-size: 26px; font-style: normal; margin-top: 6px; letter-spacing: 1px;
+  }
+  .closing .thanks {
+    margin-top: 26px; font-style: italic;
+    font-family: 'Cormorant Garamond', serif; font-size: 17px; opacity: 0.9;
+  }
+  .closing .sign { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; }
+
+  .divider { text-align: center; color: var(--gold); margin: 50px 0 40px; letter-spacing: 10px; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .feature, .feature.reverse { grid-template-columns: 1fr; }
+    .feature.reverse .content { order: 2; }
+    .feature.reverse .photo { order: 1; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .duo-grid, .promise-list { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 44px; }
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body, .page { background: white; padding: 20px; max-width: 100%; }
+    section, .feature, .duo-card, .closing, .cover { page-break-inside: avoid; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== COVER ===== -->
+  <header class="cover">
+    <div class="hero">
+      <div class="photo v3" data-label="Add hero image: cover.jpg">
+        <img src="images/cover.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="overlay">
+        <div class="ornament">✦ ✿ ✦</div>
+        <h1>Heavenly Treats<span class="by">by Angel</span></h1>
+        <div class="tagline">Freshly Baked just for you · Customized with Love</div>
+      </div>
+    </div>
+    <div class="intro-block">
+      <p>Welcome to <strong>Heavenly Treats by Angel</strong>, where every dessert is handcrafted fresh to order with quality ingredients, attention to detail, and plenty of love.</p>
+      <p>From celebration cakes and fusion desserts to healthy treats and customized creations, we are here to bring your sweetest cravings to life.</p>
+    </div>
+  </header>
+
+  <!-- ===== TRES LECHES ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Signature</div>
+      <h2>Tres Leches Collection</h2>
+      <div class="sub">Soft, creamy, and packed with flavor</div>
+    </div>
+
+    <div class="feature">
+      <div class="photo" data-label="Add image: tres-leches-hero.jpg">
+        <img src="images/tres-leches-hero.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="content">
+        <h3>Our Signature Tres Leches</h3>
+        <div class="lead">Eight flavors, endless joy.</div>
+        <div class="pricing">
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">22 oz</div>
+            <div class="amt">$35</div>
+          </div>
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">52 oz</div>
+            <div class="amt">$65</div>
+          </div>
+        </div>
+        <p class="note">Final pricing may vary by flavor selection.</p>
+      </div>
+    </div>
+
+    <ul class="custom-list" style="columns: 2; margin-top: 22px;">
+      <li>Classic</li>
+      <li>Rasmalai</li>
+      <li>Mango</li>
+      <li>Pistachio</li>
+      <li>Rose Pistachio</li>
+      <li>Lotus Biscoff</li>
+      <li>Cookies &amp; Cream</li>
+      <li>Mixed Berry</li>
+    </ul>
+
+    <div class="gallery" style="grid-template-columns: repeat(3, 1fr); margin-top: 30px;">
+      <div class="item">
+        <div class="photo v3"><img src="images/tres/mango_tres_leche_photo.jpeg" alt=""></div>
+        <div class="label">Mango</div>
+      </div>
+      <div class="item">
+        <div class="photo v4"><img src="images/tres/rasamali_tres_leches_photo.jpeg" alt=""></div>
+        <div class="label">Rasmalai</div>
+      </div>
+      <div class="item">
+        <div class="photo v2"><img src="images/tres/Rose pistachio tres leches_photo.jpeg" alt=""></div>
+        <div class="label">Rose Pistachio</div>
+      </div>
+    </div>
+    <p class="note">Have a flavor in mind that's not listed? Let us know — we love creating custom flavors!</p>
+  </section>
+
+  <!-- ===== TIRAMISU ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Italian Classic</div>
+      <h2>Tiramisu Collection</h2>
+      <div class="sub">Rich mascarpone layers, premium ingredients</div>
+    </div>
+
+    <div class="feature reverse">
+      <div class="photo v4" data-label="Add image: tiramisu-hero.jpg">
+        <img src="images/tiramisu-hero.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="content">
+        <h3>Layered, Luscious, Unforgettable</h3>
+        <div class="lead">Four flavors of indulgence.</div>
+        <div class="pricing">
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">22 oz</div>
+            <div class="amt">$40</div>
+          </div>
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">52 oz</div>
+            <div class="amt">$55</div>
+          </div>
+        </div>
+        <p class="note">Final pricing may vary by flavor selection.</p>
+      </div>
+    </div>
+
+    <ul class="custom-list" style="columns: 2; margin-top: 22px;">
+      <li>Classic</li>
+      <li>Vietnamese</li>
+      <li>Pistachio</li>
+      <li>Mango</li>
+    </ul>
+
+    <div class="gallery" style="grid-template-columns: repeat(2, 1fr); max-width: 500px; margin: 30px auto 0;">
+      <div class="item">
+        <div class="photo v3"><img src="images/tiramisu/Pistachio tiramisu_photo.jpeg" alt=""></div>
+        <div class="label">Pistachio</div>
+      </div>
+      <div class="item">
+        <div class="photo v4"><img src="images/tiramisu/Vietnamese tiramisu_photo.jpeg" alt=""></div>
+        <div class="label">Vietnamese</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- ===== CUSTOM CAKES ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Made for Celebrations</div>
+      <h2>Custom Cakes</h2>
+      <div class="sub">Birthdays · Anniversaries · Showers · Weddings</div>
+    </div>
+
+    <div class="feature">
+      <div class="photo v5" data-label="Add image: custom-cake-hero.jpg">
+        <img src="images/custom-cake-hero.jpg" alt="" onerror="this.style.display='none'">
+      </div>
+      <div class="content">
+        <h3>Designed for Your Moment</h3>
+        <div class="lead">Tell us your vision — we'll bring it to life.</div>
+        <div class="pricing">
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">4" Bento</div>
+            <div class="amt">$30</div>
+          </div>
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">6" Cake</div>
+            <div class="amt">$65</div>
+          </div>
+        </div>
+        <p class="note">Pricing depends on size, flavor, design &amp; customization.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size: 24px; font-style: italic; text-align: center; margin: 30px 0 14px;">Available Sizes</h3>
+    <ul class="custom-list" style="columns: 2; max-width: 400px; margin: 0 auto;">
+      <li>4" Bento Cake</li>
+      <li>5" Cake</li>
+      <li>6" Cake</li>
+      <li>8" Cake</li>
+      <li>9" Cake</li>
+    </ul>
+    <p class="note">More sizes coming soon!</p>
+  </section>
+
+  <!-- ===== FLAVOURS ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Build Your Cake</div>
+      <h2>Cake Flavours &amp; Fillings</h2>
+      <div class="sub">Vanilla or Chocolate sponge — your choice</div>
+    </div>
+
+    <h3 style="font-size: 26px; font-style: italic; text-align: center; margin: 20px 0 14px;">Classic Flavours</h3>
+    <ul class="custom-list" style="columns: 2; max-width: 600px; margin: 0 auto;">
+      <li>Vanilla</li>
+      <li>Chocolate</li>
+      <li>Butterscotch</li>
+      <li>Pineapple</li>
+      <li>Black Forest</li>
+      <li>Marble (Vanilla &amp; Chocolate)</li>
+    </ul>
+
+    <h3 style="font-size: 26px; font-style: italic; text-align: center; margin: 40px 0 14px;">Premium Flavours</h3>
+    <ul class="custom-list" style="columns: 2; max-width: 800px; margin: 0 auto;">
+      <li>Rasmalai</li>
+      <li>Pretty Pistachio</li>
+      <li>Mango Dream Cream</li>
+      <li>Rose Pistachio</li>
+      <li>Saffron &amp; Cardamom</li>
+      <li>Vietnamese Tiramisu Cake</li>
+      <li>Classic Tiramisu Cake</li>
+      <li>Mango Butterscotch</li>
+      <li>Nutella Hazelnut</li>
+      <li>Nutella Ferrero Rocher</li>
+      <li>Lotus Biscoff</li>
+      <li>Fresh Mixed Berry</li>
+      <li>Milk Chocolate Truffle</li>
+      <li>Dark Chocolate Truffle</li>
+      <li>Oreo Cookies &amp; Cream</li>
+      <li>Caramel &amp; Pecan</li>
+      <li>Hazelnut Praline</li>
+      <li>White Forest</li>
+      <li>Chocolate Mousse</li>
+      <li>Mocha Mousse</li>
+      <li>Dark Chocolate Raspberry</li>
+      <li>Strawberry Shortcake</li>
+    </ul>
+
+    <div class="gallery" style="grid-template-columns: repeat(4, 1fr); margin-top: 30px;">
+      <div class="item">
+        <div class="photo v2"><img src="images/flavours/Vanilla fruit cake_photo.jpeg" alt=""></div>
+        <div class="label">Vanilla Fruit</div>
+      </div>
+      <div class="item">
+        <div class="photo v3"><img src="images/flavours/Mango &amp; butterscotch cake_photo.jpeg" alt=""></div>
+        <div class="label">Mango Butterscotch</div>
+      </div>
+      <div class="item">
+        <div class="photo v4"><img src="images/flavours/Rasmalai cake_photo.jpeg" alt=""></div>
+        <div class="label">Rasmalai</div>
+      </div>
+      <div class="item">
+        <div class="photo v5"><img src="images/flavours/Dark chocolate &amp; Raspberry cake_photo.jpeg" alt=""></div>
+        <div class="label">Dark Choc Raspberry</div>
+      </div>
+    </div>
+
+    <p class="note">Don't see your favorite flavor? Reach out — we love bringing custom dessert ideas to life.</p>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- ===== VIRAL ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Trending Now</div>
+      <h2>Viral Favorites</h2>
+      <div class="sub">The internet's favorite desserts, handcrafted fresh</div>
+    </div>
+    <div class="duo-grid">
+      <div class="duo-card">
+        <div class="photo v4">
+          <img src="images/viral/dubai_chocolate_photo.jpeg" alt="">
+        </div>
+        <div class="body">
+          <h4>Dubai Kataifi Chocolate</h4>
+          <p>Available in Milk Chocolate &amp; Dark Chocolate</p>
+        </div>
+      </div>
+      <div class="duo-card">
+        <div class="photo v3">
+          <img src="images/viral/Dubai chocolate brownie_photo.jpeg" alt="">
+        </div>
+        <div class="body">
+          <h4>Dubai Chocolate Brownie</h4>
+          <p>A rich, fudgy take on the viral favorite</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BROWNIES ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Fresh from the Oven</div>
+      <h2>Brownie Collection</h2>
+    </div>
+    <div class="feature reverse">
+      <div class="photo v2">
+        <img src="images/viral/Double chocochip walnut brownies_photo.jpeg" alt="">
+      </div>
+      <div class="content">
+        <h3>Fudgy. Rich. Made to Share.</h3>
+        <div class="lead">Topped your way.</div>
+        <ul class="custom-list" style="margin: 8px 0 12px;">
+          <li>Walnut Brownie</li>
+          <li>Double Chocolate Brownie</li>
+          <li>Triple Chocolate Brownie</li>
+          <li>Custom Brownies with Toppings</li>
+        </ul>
+        <div class="toppings">
+          <span class="topping-chip">Pistachio Cream</span>
+          <span class="topping-chip">Milk Chocolate</span>
+          <span class="topping-chip">Dark Chocolate</span>
+          <span class="topping-chip">Butterscotch</span>
+          <span class="topping-chip">Caramel</span>
+          <span class="topping-chip">Peanut Butter</span>
+        </div>
+        <div class="pricing">
+          <div class="price-card">
+            <div class="starting">Starting at</div>
+            <div class="size">Set of 9</div>
+            <div class="amt">$18</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- ===== DESSERT CUPS ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Perfect for Parties</div>
+      <h2>Dessert Cups</h2>
+      <div class="sub">Gatherings · Corporate Events · Birthdays</div>
+    </div>
+    <ul class="custom-list" style="columns: 2; margin-top: 22px;">
+      <li>Rasmalai Tres Leches</li>
+      <li>Pistachio Tres Leches</li>
+      <li>Rose Pistachio Tres Leches</li>
+      <li>Mango Tres Leches</li>
+      <li>Chocolate Mousse</li>
+      <li>Vietnamese Tiramisu</li>
+      <li>Classic Tiramisu</li>
+      <li>Seasonal &amp; Custom Flavours</li>
+    </ul>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="starting">Starting from</div>
+        <div class="size">5 oz Cups</div>
+        <div class="amt">$5 <span style="font-size: 16px; color: var(--muted);">each</span></div>
+      </div>
+    </div>
+    <p class="note">Minimum Order: 6 Cups per flavour.<br>Pricing may vary depending on flavour and customization.</p>
+  </section>
+
+  <!-- ===== HEALTHY ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Guilt-Free</div>
+      <h2>Healthy Treats</h2>
+      <div class="sub">Who said healthy can't be delicious?</div>
+    </div>
+    <h3 style="font-size: 24px; font-style: italic; margin: 20px 0 10px;">Available Options</h3>
+    <ul class="custom-list">
+      <li>Healthy Brownie Bites <span style="color:var(--muted); font-style:italic;">(No-Bake)</span></li>
+      <li>NOIRGRAIN Choc Chip Cookies <span style="color:var(--muted); font-style:italic;">(Suitable for all ages and made with wholesome ingredients)</span></li>
+      <li>No-Guilt Peanut Butter &amp; Date Bark</li>
+    </ul>
+
+    <div class="gallery" style="grid-template-columns: repeat(2, 1fr); max-width: 500px; margin: 30px auto 0;">
+      <div class="item">
+        <div class="photo v3"><img src="images/healthy/healthy_bronie_bites_photo.jpeg" alt=""></div>
+        <div class="label">Healthy Brownie Bites</div>
+      </div>
+      <div class="item">
+        <div class="photo v4"><img src="images/healthy/noir_grain_cookies_photo.jpeg" alt=""></div>
+        <div class="label">NOIRGRAIN Cookies</div>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top: 20px;">Looking for a healthier version of your favorite dessert? We'd be happy to create it for you.</p>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
+  <!-- ===== PROMISE ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">Our Standard</div>
+      <h2>Our Promise</h2>
+    </div>
+    <ul class="promise-list">
+      <li>Freshly made to order</li>
+      <li>Prepared with premium ingredients</li>
+      <li>Crafted with care and attention to detail</li>
+      <li>Made without compromising quality or cleanliness</li>
+    </ul>
+    <p class="note">Please place your order at least <strong>24–48 hours in advance</strong>.</p>
+  </section>
+
+  <!-- ===== WHY HOME BAKER ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">A Note From Us</div>
+      <h2>Why Choose a Home Baker?</h2>
+    </div>
+    <div class="why-baker">
+      <p>Every dessert you order from a home baker is created specifically for you — not mass-produced in bulk.</p>
+      <p>Your preferences, flavor choices, sweetness level, and design requests are thoughtfully considered throughout the process.</p>
+      <p>When you support a small business, you're supporting a dream, a passion, and countless hours of dedication behind every creation.</p>
+      <p>Every order, review, recommendation, and kind message means more than you know — and for that, we are truly grateful.</p>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING ===== -->
+  <div class="closing">
+    <div class="photo v4" data-label="Add image: closing.jpg">
+      <img src="images/closing.jpg" alt="" onerror="this.style.display='none'">
+    </div>
+    <div class="overlay">
+      <h2>Ready to Order?</h2>
+      <p>We would love to create something special for your next celebration.</p>
+      <p style="margin-top:8px;">For orders, inquiries, custom requests, or feedback — feel free to reach out anytime.</p>
+      <div class="insta">
+        Follow &amp; Order on Instagram
+        <strong>@heavenlytreatsby_angel</strong>
+      </div>
+      <p class="thanks">Thank you for supporting small businesses and allowing us to be part of your sweetest moments.</p>
+      <div class="sign">— Heavenly Treats by Angel</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
