@@ -12,15 +12,17 @@ This file is a living document where you can dump your thoughts, client requests
 - [ ] Add animations when scrolling down the page.
 
 
-- [ ]modify the AI gen pic for tres, Cake, Tiramisu to PS real pictures 
-- [ ]Change Mango tres plate to box(same as others)
+- [ ] modify the AI gen pic for tres, Cake, Tiramisu to PS real pictures 
+- [ ] Change Mango tres plate to box(same as others)
 - [ ] Add catering orders
-- [ ] Add restaurant supply with pictures 
+- [ ] Add restaurant supply with pictures
+- [ ] reomve coconut shave from Dubai kataifi chocolate picture
+- [ ] Change the sign board behind the dubai chocolate brownie from matcha 
 
 
 
 ## Check if it is capable 
 
-- [ ]Make interactive websites()
-- [ ]Add whatsapp and Instagram link to order 
-- [ ]Add payment gateway 
+- [ ] Make interactive websites()
+- [ ] Add whatsapp and Instagram link to order 
+- [ ] Add payment gateway 
