@@ -19,7 +19,8 @@ This file is a living document where you can dump your thoughts, client requests
 - [ ] remove coconut shave from Dubai kataifi chocolate picture
 - [ ] Change the sign board behind the dubai chocolate brownie and remove matcha word
 - [ ] Align the Ready to Order tab properly(Heavenly treats by angel is not aligned properly)
-
+- [ ] make it easy to view in mobile and adjust in pc
+- [ ] Change the look of the website 
 
 
 ## Check if it is capable 
