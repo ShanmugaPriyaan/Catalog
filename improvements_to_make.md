@@ -12,7 +12,7 @@ This file is a living document where you can dump your thoughts, client requests
 - [ ] Add animations when scrolling down the page.
 
 
-- [ ] modify the AI gen pic for tres, Cake, Tiramisu to PS real pictures 
+- [ ] remove generated cake picture and add custom cake_7 to the custom cake picture 
 - [ ] Change Mango tres plate to box(same as others)
 - [ ] Add catering orders
 - [ ] Add restaurant supply with pictures
