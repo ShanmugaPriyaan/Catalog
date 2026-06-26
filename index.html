@@ -16,6 +16,7 @@
     --muted: #7a5e5e;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Quicksand', sans-serif;
     background: var(--cream);
@@ -49,7 +50,9 @@
     width: 100%; height: 100%;
     object-fit: cover;
     z-index: 2;
+    transition: transform 0.4s ease;
   }
+  .photo:hover img { transform: scale(1.08); }
   .photo img:not([src]), .photo img[src=""] { display: none; }
   /* Make the placeholder vary per card so it looks less repetitive */
   .photo.v2 { background: linear-gradient(135deg, #f7e8dc, #e8b5b5, #a85a6b); }
@@ -646,6 +649,38 @@
 
   <div class="divider">✦ ✿ ✦</div>
 
+  <!-- ===== CATERING ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">For Large Gatherings</div>
+      <h2>Catering Orders</h2>
+      <div class="sub">Weddings · Corporate Events · Grand Celebrations</div>
+    </div>
+    <div class="why-baker" style="text-align: center;">
+      <h3 style="font-size: 28px; font-style: italic; color: var(--rose-deep); margin-bottom: 6px;">A Dessert Table to Remember</h3>
+      <div class="lead" style="color: var(--muted); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; margin-bottom: 14px;">Make your event unforgettable with our customized dessert displays.</div>
+      <p style="margin-bottom: 14px;">We offer comprehensive catering packages tailored to your event size, theme, and preferences. From elegant mini dessert cups to grand custom cakes and beautifully arranged brownie towers.</p>
+      <p class="note">Please contact us at least 2 weeks in advance for catering orders.</p>
+    </div>
+  </section>
+
+  <!-- ===== RESTAURANT SUPPLY ===== -->
+  <section>
+    <div class="section-header">
+      <div class="eyebrow">B2B Wholesale</div>
+      <h2>Restaurant Supply</h2>
+      <div class="sub">Elevate your menu with our premium desserts</div>
+    </div>
+    <div class="why-baker" style="text-align: center;">
+      <h3 style="font-size: 28px; font-style: italic; color: var(--rose-deep); margin-bottom: 6px;">Partner with Heavenly Treats</h3>
+      <div class="lead" style="color: var(--muted); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 17px; margin-bottom: 14px;">Consistent quality. Michelin-star aesthetic.</div>
+      <p style="margin-bottom: 14px;">Looking to offer your customers high-end desserts without the overhead of an in-house pastry chef? We provide reliable, bulk wholesale supply of our signature cakes, tiramisus, and brownies to local cafes and restaurants.</p>
+      <p class="note">Contact us for our wholesale pricing and tasting box.</p>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✿ ✦</div>
+
   <!-- ===== PROMISE ===== -->
   <section>
     <div class="section-header">
@@ -684,9 +719,20 @@
       <h2>Ready to Order?</h2>
       <p>We would love to create something special for your next celebration.</p>
       <p style="margin-top:8px;">For orders, inquiries, custom requests, or feedback — feel free to reach out anytime.</p>
-      <div class="insta">
-        Follow &amp; Order on Instagram
-        <strong>@heavenlytreatsby_angel</strong>
+      <div class="insta" style="margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+        <a href="https://instagram.com/heavenlytreatsby_angel" target="_blank" style="color: var(--cream); text-decoration: none; display: block; border: 1px solid rgba(253,246,240,0.4); padding: 12px 32px; border-radius: 40px; transition: background 0.3s;">
+          <span style="font-family: 'Quicksand', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; display: block; opacity: 0.8;">Message us on</span>
+          <strong>@heavenlytreatsby_angel</strong>
+        </a>
+        <a href="https://wa.me/1234567890" target="_blank" style="color: var(--cream); text-decoration: none; display: block; border: 1px solid rgba(253,246,240,0.4); padding: 12px 32px; border-radius: 40px; background: rgba(255,255,255,0.1); transition: background 0.3s;">
+          <span style="font-family: 'Quicksand', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; display: block; opacity: 0.8;">Or Order via</span>
+          <strong>WhatsApp</strong>
+        </a>
+        <!-- Payment Gateway Placeholder: Uncomment and replace URL when you have a Stripe Payment Link -->
+        <!-- <a href="https://buy.stripe.com/your-payment-link" target="_blank" style="color: var(--cream); text-decoration: none; display: block; border: 1px solid rgba(253,246,240,0.4); padding: 12px 32px; border-radius: 40px; transition: background 0.3s;">
+          <span style="font-family: 'Quicksand', sans-serif; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; display: block; opacity: 0.8;">Secure Payment</span>
+          <strong>Pay with Card</strong>
+        </a> -->
       </div>
       <p class="thanks">Thank you for supporting small businesses and allowing us to be part of your sweetest moments.</p>
       <div class="sign">— Heavenly Treats by Angel</div>
