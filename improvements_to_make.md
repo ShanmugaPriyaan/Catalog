@@ -5,11 +5,7 @@ This file is a living document where you can dump your thoughts, client requests
 ## Pending Improvements
 *(Add your bullet points here! Some examples below...)*
 
-- [ ] Add a new flavor section for "Seasonal Delights".
-- [ ] Connect the "Ready to Order" Instagram link directly to an order form.
-- [ ] Add an "About the Baker" section with a picture.
-- [ ] Implement a Dark Mode toggle.
-- [ ] Add animations when scrolling down the page.
+
 
 
 - [ ] remove generated cake picture and add custom cake_7 to the custom cake picture 
