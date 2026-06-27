@@ -5,21 +5,13 @@ This file is a living document where you can dump your thoughts, client requests
 ## Pending Improvements
 *(Add your bullet points here! Some examples below...)*
 
-- [ ] Add a new flavor section for "Seasonal Delights".
-- [ ] Connect the "Ready to Order" Instagram link directly to an order form.
-- [ ] Add an "About the Baker" section with a picture.
-- [ ] Implement a Dark Mode toggle.
-- [ ] Add animations when scrolling down the page.
-
-
-- [ ] modify the AI gen pic for tres, Cake, Tiramisu to PS real pictures 
 - [ ] Change Mango tres plate to box(same as others)
 - [ ] Add catering orders
 - [ ] Add restaurant supply with pictures
 - [ ] remove coconut shave from Dubai kataifi chocolate picture
 - [ ] Change the sign board behind the dubai chocolate brownie and remove matcha word
 - [ ] Align the Ready to Order tab properly(Heavenly treats by angel is not aligned properly)
-
+- [ ] make it easy to view in mobile and adjust in pc
 
 
 ## Check if it is capable 
@@ -27,3 +19,5 @@ This file is a living document where you can dump your thoughts, client requests
 - [ ] Make interactive websites()
 - [ ] Add whatsapp and Instagram link to order 
 - [ ] Add payment gateway 
+- [x] i have also updated the custom-cake-hero can you polish and upscale it and make it look like it is professinaly photografhed
+
